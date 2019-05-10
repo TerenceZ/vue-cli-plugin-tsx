@@ -4,9 +4,9 @@ Write vue in TSX, powered by `babel-plugin-macros` and `vue-tsx.macro`.
 
 ### Install
 
-**NOTICE**: This package only works for `vue 2` and projects created by `vue-cli` with jsx and typescript.
+**NOTICE**: This package only works for `vue 2` and projects created by `vue-cli`.
 
-First of all, you should **DELETE** the plugin `@vue/cli--plugin-typescript`.
+**NOTICE**: This package isn't campatible with `@vue/cli-plugin-typescript`.
 
 ```bash
 npm install -D vue-cli-plugin-tsx
