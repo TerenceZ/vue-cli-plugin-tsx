@@ -1514,10 +1514,10 @@ util-deprecate@~1.0.1:
   resolved "https://registry.npm.taobao.org/util-deprecate/download/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
-vue-tsx.macro@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.npm.taobao.org/vue-tsx.macro/download/vue-tsx.macro-0.0.2.tgz#c82c94d7afb2d228f6be4c513d74b3afae5d1ed8"
-  integrity sha1-yCyU16+y0ij2vkxRPXSzr65dHtg=
+vue-tsx.macro@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.npm.taobao.org/vue-tsx.macro/download/vue-tsx.macro-0.0.4.tgz#6f22f29c58c4329b3869981162a599420b5ade64"
+  integrity sha1-byLynFjEMps4aZgRYqWZQgta3mQ=
   dependencies:
     csstype "^2.6.4"
 
