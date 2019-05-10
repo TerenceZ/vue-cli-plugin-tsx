@@ -47,11 +47,7 @@ module.exports = (api, _, __, invoking) => {
       if (jsRE.test(file) && !excludeRE.test(file)) {
         const tsFile = file.replace(jsRE, '.ts')
         if (!files[tsFile]) {
-          let content = files[file]
-          if (tsLint) {
-            content = convertLintFlags(content)
-          }
-          files[tsFile] = content
+          files[tsFile] = files[file]
         }
         delete files[file]
       }
