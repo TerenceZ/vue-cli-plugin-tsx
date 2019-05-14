@@ -1,4 +1,4 @@
-import { component, SLOT_TYPES, type } from 'vue-tsx.macro'
+import { component, SCOPED_SLOTS, type } from 'vue-tsx.macro'
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default component({
@@ -9,10 +9,11 @@ export default component({
     },
   },
 
-  [SLOT_TYPES]: {
-    type: String,
-    arg: type<string>(), // message
-    required: true,
+  [SCOPED_SLOTS]: {
+    default: {
+      scope: type<string>(), // message
+      required: true,
+    },
   },
 
   render() {
