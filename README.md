@@ -22,7 +22,7 @@ yarn add -D vue-cli-plugin-tsx
 
 ```jsx
 import LogoAsset from '../assets/logo.png'
-import { component, type as t, EVENT_TYPES, SLOT_TYPES } from 'vue-tsx.macro'
+import { component, type as t, EVENTS, SCOPED_SLOTS } from 'vue-tsx.macro'
 import HelloWorld from '../components/HelloWorld.vue'
 import { VNode } from 'vue'
 
@@ -46,15 +46,19 @@ const Component = component({
 
   // Declare component's events with their payload types.
   // This field will be removed by macro.
-  [EVENT_TYPES]: {
+  [EVENTS]: {
     eventWithStringPayload: String,
     eventWithTSPayload: t<{ count: number }>(),
   },
 
-  // Declare component's single child slot type.
+  // Declare component's scoped slots' scope (param) types.
   // Single required child of function.
-  // Vue supports function child only if it's the only child.
-  [SLOT_TYPES]: t<(count: number) => VNode>(),
+  [SCOPED_SLOTS]: {
+    default: {
+      scope: Number,
+      required: true,
+    }
+  },
 
   render() {
     return (
@@ -68,7 +72,9 @@ const Component = component({
 })
 
 const Home = component({
-  // the code will be benefit for all ts type hint.
+  // Because Vue supports function child only if it's the only child.
+  // It means if we only declare scoped slots with only one default one,
+  // the component can accept a function.
   render() {
     return (
       <div
@@ -80,8 +86,31 @@ const Home = component({
         }}>
         <img alt='123' src={LogoAsset} />
         <Component propWithRequiredTSType={[1, 2]} propWithVuePropDef={123}>
-          {() => <hr />}
+          {() => [<hr />]}
         </Component>
+        <!-- Or through attributes -->
+        <Component props={{
+          propWithRequiredTSType: [1, 2],
+          propWithVuePropDef: 123,
+        }} scopedSlots={{
+          default: props => [<hr />]
+        }} on={{
+          eventWithStringPayload: payload => console.log(payload)
+        }} />
+        <!-- Or through spreading attributes -->
+        const attrs = {
+          props: {
+            propWithRequiredTSType: [1, 2],
+            propWithVuePropDef: 123,
+          },
+          scopedSlots: {
+            default: props => [<hr />]
+          },
+          on: {
+            eventWithStringPayload: payload => console.log(payload)
+          }
+        }
+        <Component {...attrs}  />
       </div>
     )
   },
