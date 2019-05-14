@@ -91,16 +91,20 @@ const Home = component({
       },
 
       // Due to TS' restriction, we cannot derive key named 'onEventWithStringPayload',
-      // so we cannot pass event listener as attribute, and we should pass them in `on`
-      // attribute.
+      // so we cannot pass event listener as attribute for custom component, and we should
+      // pass them in `on` attribute.
       on: {
         eventWithStringPayload: payload => console.log(payload)
       }
     }
 
+    // However, because Intrinsic Elements' listener names are known,
+    // you can use such as `onMouseUp={...}` on Intrinsic Elements, e.g.,
+    // div, span, and so on.
     return (
       <div
         class='home'
+        onMouseDown={event => console.log(event.pageX)}
         on={{
           click: event => {
             console.log(event.target)
