@@ -23,6 +23,7 @@
   "homepage": "https://github.com/TerenceZ/vue-cli-plugin-tsx#readme",
   "dependencies": {
     "@babel/preset-typescript": "^7.3.3",
+    "@types/webpack-env": "^1.13.9",
     "babel-plugin-macros": "^2.5.1",
     "babel-plugin-transform-vue-jsx-spread-attributes": "^0.0.1",
     "fork-ts-checker-webpack-plugin": "^1.3.1",
