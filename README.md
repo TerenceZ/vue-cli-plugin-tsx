@@ -2,11 +2,29 @@
 
 Write vue in TSX, powered by `babel-plugin-macros`, `vue-tsx.macro` and `babel-plugin-transform-vue-jsx-spread-attributes`.
 
-### Install
-
 **NOTICE**: This package only works for `vue 2` and projects created by `vue-cli`.
 
 **NOTICE**: This package isn't campatible with `@vue/cli-plugin-typescript`.
+
+**NOTICE**: The followed names / prefixes are reserved, if you use them, something will go wrong.
+  * staticClass
+  * class
+  * style
+  * key
+  * ref
+  * refInFor
+  * slot
+  * scopedSlots
+  * model
+  * domProps (prop and prefixed prop)
+  * on (prop and prefixed prop)
+  * nativeOn (prop and prefixed prop)
+  * hook (prop and prefixed prop)
+  * attrs (prop and prefixed prop)
+  
+  _However, you can use them as attributes in JSX to pass related data._
+
+### Install
 
 ```bash
 npm install -D vue-cli-plugin-tsx
