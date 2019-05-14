@@ -4,7 +4,7 @@ const path = require('path')
 
 module.exports = (api, options) => {
   const useThreads = process.env.NODE_ENV === 'production' && options.parallel
-  const tsxOptions = options.pluginOptions.tsx || {}
+  const tsxOptions = (options.pluginOptions && options.pluginOptions.tsx) || {}
 
   api.chainWebpack(config => {
     config.resolveLoader.modules.prepend(
