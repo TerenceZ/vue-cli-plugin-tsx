@@ -55,7 +55,6 @@ const Component = component({
   },
 
   // Declare component's scoped slots' scope (param) types.
-  // Single required child of function.
   [SCOPED_SLOTS]: {
     default: {
       scope: Number,
@@ -111,15 +110,6 @@ const Home = component({
         <Component propWithRequiredTSType={[1, 2]} propWithVuePropDef={123}>
           {() => [<hr />]}
         </Component>
-
-        <Component props={{
-          propWithRequiredTSType: [1, 2],
-          propWithVuePropDef: 123,
-        }} scopedSlots={{
-          default: props => [<hr />]
-        }} on={{
-          eventWithStringPayload: payload => console.log(payload)
-        }} />
 
         <Component {...attrs}  />
       </div>
