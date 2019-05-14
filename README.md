@@ -1,6 +1,6 @@
 # vue-cli-plugin-tsx
 
-Write vue in TSX, powered by `babel-plugin-macros` and `vue-tsx.macro`.
+Write vue in TSX, powered by `babel-plugin-macros`, `vue-tsx.macro` and `babel-plugin-transform-vue-jsx-spread-attributes`.
 
 ### Install
 
@@ -21,9 +21,9 @@ yarn add -D vue-cli-plugin-tsx
 ### Example
 
 ```jsx
-import LogoAsset from '../assets/logo.png'
+import LogoAsset from '@/assets/logo.png'
 import { component, type as t, EVENTS, SCOPED_SLOTS } from 'vue-tsx.macro'
-import HelloWorld from '../components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld.vue'
 import { VNode } from 'vue'
 
 const Component = component({
@@ -33,6 +33,9 @@ const Component = component({
     // required prop with type number
     propWithVuePropDef: {
       type: Number,
+      // If prop contains required filed, no matter of its value (true of false),
+      // this prop will be required.
+      // Because in most cases, we only set required when it's true.
       required: true,
     },
     // optional prop with type { a: number; b?: string } | undefined
@@ -76,6 +79,26 @@ const Home = component({
   // It means if we only declare scoped slots with only one default one,
   // the component can accept a function.
   render() {
+    const attrs = {
+      // names that not Vue's VNode options key name will
+      // move to attrs property. And Vue will pick them to
+      // props if defined in Component's props field.
+      propWithRequiredTSType: [1, 2],
+      propWithVuePropDef: 123,
+
+      // We can pass scoped slots to children to generate VNodes.
+      scopedSlots: {
+        default: props => [<hr />]
+      },
+
+      // Due to TS' restriction, we cannot derive key named 'onEventWithStringPayload',
+      // so we cannot pass event listener as attribute, and we should pass them in `on`
+      // attribute.
+      on: {
+        eventWithStringPayload: payload => console.log(payload)
+      }
+    }
+
     return (
       <div
         class='home'
@@ -88,7 +111,7 @@ const Home = component({
         <Component propWithRequiredTSType={[1, 2]} propWithVuePropDef={123}>
           {() => [<hr />]}
         </Component>
-        <!-- Or through attributes -->
+
         <Component props={{
           propWithRequiredTSType: [1, 2],
           propWithVuePropDef: 123,
@@ -97,19 +120,7 @@ const Home = component({
         }} on={{
           eventWithStringPayload: payload => console.log(payload)
         }} />
-        <!-- Or through spreading attributes -->
-        const attrs = {
-          props: {
-            propWithRequiredTSType: [1, 2],
-            propWithVuePropDef: 123,
-          },
-          scopedSlots: {
-            default: props => [<hr />]
-          },
-          on: {
-            eventWithStringPayload: payload => console.log(payload)
-          }
-        }
+
         <Component {...attrs}  />
       </div>
     )

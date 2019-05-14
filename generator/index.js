@@ -3,7 +3,8 @@ module.exports = (api, _, __, invoking) => {
     devDependencies: {
       '@babel/preset-typescript': '^7.3.3',
       'babel-plugin-macros': '^2.5.1',
-      'vue-tsx.macro': '^0.1.0',
+      'babel-plugin-transform-vue-jsx-spread-attributes': '^0.0.1',
+      'vue-tsx.macro': '^0.1.2',
       typescript: '^3.4.5',
     },
   })
