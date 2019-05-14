@@ -6,23 +6,26 @@ Write vue in TSX, powered by `babel-plugin-macros`, `vue-tsx.macro` and `babel-p
 
 **NOTICE**: This package isn't campatible with `@vue/cli-plugin-typescript`.
 
+**NOTICE**: `<template />` isn't available, please use `scopedSlots` attribute.
+
 **NOTICE**: The followed names / prefixes are reserved, if you use them, something will go wrong.
-  * staticClass
-  * class
-  * style
-  * key
-  * ref
-  * refInFor
-  * slot
-  * scopedSlots
-  * model
-  * domProps (prop and prefixed prop)
-  * on (prop and prefixed prop)
-  * nativeOn (prop and prefixed prop)
-  * hook (prop and prefixed prop)
-  * attrs (prop and prefixed prop)
-  
-  _However, you can use them as attributes in JSX to pass related data._
+
+- staticClass
+- class
+- style
+- key
+- ref
+- refInFor
+- slot
+- scopedSlots
+- model
+- domProps (prop and prefixed prop)
+- on (prop and prefixed prop)
+- nativeOn (prop and prefixed prop)
+- hook (prop and prefixed prop)
+- attrs (prop and prefixed prop)
+
+_However, you can use them as attributes in JSX to pass related data._
 
 ### Install
 
@@ -132,7 +135,7 @@ const Home = component({
         }}>
         <img alt='123' src={LogoAsset} />
         <Component propWithRequiredTSType={[1, 2]} propWithVuePropDef={123}>
-          {() => [<hr />]}
+          {() => <hr />}
         </Component>
 
         <Component {...attrs}  />
