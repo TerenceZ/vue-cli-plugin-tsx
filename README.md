@@ -1,6 +1,6 @@
 # vue-cli-plugin-tsx
 
-Write vue in TSX, powered by `babel-plugin-macros`, `vue-tsx.macro` and `babel-plugin-transform-vue-jsx-spread-attributes`.
+Write vue in TSX, powered by `babel-plugin-macros`, `vue-tsx.macro` and `babel-plugin-transform-vue-jsx-spread-attributes`. And no runtime helpers are injected, except for merging attributes in JSX.
 
 **NOTICE**: This package only works for `vue 2` and projects created by `vue-cli`.
 
@@ -44,6 +44,8 @@ import { component, type as t, EVENTS, SCOPED_SLOTS } from 'vue-tsx.macro'
 import HelloWorld from '@/components/HelloWorld.vue'
 import { VNode } from 'vue'
 
+// It will transform to Vue object with no runtime helper:
+// const Component = { props: {...}, render: function () { ... } }
 const Component = component({
   props: {
     // optional prop with type string | undefined.
