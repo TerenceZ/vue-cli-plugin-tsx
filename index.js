@@ -4,6 +4,7 @@ const path = require('path')
 
 module.exports = (api, options) => {
   const useThreads = process.env.NODE_ENV === 'production' && options.parallel
+  const tsxOptions = options.pluginOptions.tsx || {}
 
   api.chainWebpack(config => {
     config.resolveLoader.modules.prepend(
@@ -67,7 +68,7 @@ module.exports = (api, options) => {
         .plugin('fork-ts-checker')
         .use(require('fork-ts-checker-webpack-plugin'), [
           {
-            async: false,
+            async: (tsxOptions.check && tsxOptions.check.async) !== false,
             vue: true,
             formatter: 'codeframe',
             useTypescriptIncrementalApi: true,
