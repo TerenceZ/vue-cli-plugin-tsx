@@ -1,6 +1,6 @@
 # vue-cli-plugin-tsx
 
-Write vue in TSX, powered by [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros), [vue-tsx.macro](https://github.com/TerenceZ/vue-tsx.macro) and [babel-plugin-transform-vue-jsx-spread-attributes]((https://github.com/TerenceZ/babel-plugin-transform-vue-jsx-spread-attributes). And no runtime helpers are injected, except for merging attributes in JSX.
+Write vue in TSX, powered by [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros), [vue-tsx.macro](https://github.com/TerenceZ/vue-tsx.macro) and [babel-plugin-transform-vue-jsx-spread-attributes](https://github.com/TerenceZ/babel-plugin-transform-vue-jsx-spread-attributes). And no runtime helpers are injected, except for merging attributes in JSX.
 
 **NOTICE**: This package only works for `vue 2` and projects created by `vue-cli`.
 
