@@ -1,12 +1,30 @@
 # vue-cli-plugin-tsx
 
-Write vue in TSX, powered by `babel-plugin-macros`, `vue-tsx.macro` and `babel-plugin-transform-vue-jsx-spread-attributes`.
-
-### Install
+Write vue in TSX, powered by `babel-plugin-macros`, `vue-tsx.macro` and `babel-plugin-transform-vue-jsx-spread-attributes`. And no runtime helpers are injected, except for merging attributes in JSX.
 
 **NOTICE**: This package only works for `vue 2` and projects created by `vue-cli`.
 
 **NOTICE**: This package isn't campatible with `@vue/cli-plugin-typescript`.
+
+**NOTICE**: The followed names / prefixes are reserved, if you use them, something will go wrong.
+  * staticClass
+  * class
+  * style
+  * key
+  * ref
+  * refInFor
+  * slot
+  * scopedSlots
+  * model
+  * domProps (prop and prefixed prop)
+  * on (prop and prefixed prop)
+  * nativeOn (prop and prefixed prop)
+  * hook (prop and prefixed prop)
+  * attrs (prop and prefixed prop)
+  
+  _However, you can use them as attributes in JSX to pass related data._
+
+### Install
 
 ```bash
 npm install -D vue-cli-plugin-tsx
@@ -26,6 +44,8 @@ import { component, type as t, EVENTS, SCOPED_SLOTS } from 'vue-tsx.macro'
 import HelloWorld from '@/components/HelloWorld.vue'
 import { VNode } from 'vue'
 
+// It will transform to Vue object with no runtime helper:
+// const Component = { props: {...}, render: function () { ... } }
 const Component = component({
   props: {
     // optional prop with type string | undefined.
@@ -55,7 +75,6 @@ const Component = component({
   },
 
   // Declare component's scoped slots' scope (param) types.
-  // Single required child of function.
   [SCOPED_SLOTS]: {
     default: {
       scope: Number,
@@ -92,16 +111,20 @@ const Home = component({
       },
 
       // Due to TS' restriction, we cannot derive key named 'onEventWithStringPayload',
-      // so we cannot pass event listener as attribute, and we should pass them in `on`
-      // attribute.
+      // so we cannot pass event listener as attribute for custom component, and we should
+      // pass them in `on` attribute.
       on: {
         eventWithStringPayload: payload => console.log(payload)
       }
     }
 
+    // However, because Intrinsic Elements' listener names are known,
+    // you can use such as `onMouseUp={...}` on Intrinsic Elements, e.g.,
+    // div, span, and so on.
     return (
       <div
         class='home'
+        onMouseDown={event => console.log(event.pageX)}
         on={{
           click: event => {
             console.log(event.target)
@@ -111,15 +134,6 @@ const Home = component({
         <Component propWithRequiredTSType={[1, 2]} propWithVuePropDef={123}>
           {() => [<hr />]}
         </Component>
-
-        <Component props={{
-          propWithRequiredTSType: [1, 2],
-          propWithVuePropDef: 123,
-        }} scopedSlots={{
-          default: props => [<hr />]
-        }} on={{
-          eventWithStringPayload: payload => console.log(payload)
-        }} />
 
         <Component {...attrs}  />
       </div>
