@@ -12,6 +12,12 @@ Write vue in TSX, powered by [babel-plugin-macros](https://github.com/kentcdodds
 
 **NOTICE**: The followed names / prefixes are reserved, if you use them, something will go wrong.
 
+**NOTICE**: All intrinsic elements (e.g., `div`, `fe-merge`) should be used in kebab case.
+
+**NOTICE**: All Vue builtin components (`transition`, `transition-group` and `keep-alive`) should also be used in kebab case.
+
+**EXAMPLE**: see **samples** folder.
+
 - staticClass
 - class
 - style
