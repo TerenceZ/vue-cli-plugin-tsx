@@ -35,6 +35,8 @@ Write vue in TSX, powered by [babel-plugin-macros](https://github.com/kentcdodds
 
 _However, you can use them as attributes in JSX to pass related data._
 
+**NOTICE**: All attributes not prefixed / or equal to the above are picked as normal attributes (move to `attrs` field in `VNode`'s options), except that it's prefixed by **\$**.
+
 ### Install
 
 ```bash
