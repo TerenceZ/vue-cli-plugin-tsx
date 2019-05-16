@@ -5,7 +5,7 @@ module.exports = (api, _, __, invoking) => {
       '@types/webpack-env': '^1.13.9',
       'babel-plugin-macros': '^2.5.1',
       'babel-plugin-transform-vue-jsx-spread-attributes': '^0.0.1',
-      'vue-tsx.macro': '^0.1.11',
+      'vue-tsx.macro': '^0.1.12',
       typescript: '^3.4.5',
     },
   })
