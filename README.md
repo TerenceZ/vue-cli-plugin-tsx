@@ -2,6 +2,8 @@
 
 Write vue in TSX, powered by [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros), [vue-tsx.macro](https://github.com/TerenceZ/vue-tsx.macro) and [babel-plugin-transform-vue-jsx-spread-attributes](https://github.com/TerenceZ/babel-plugin-transform-vue-jsx-spread-attributes). And no runtime helpers are injected, except for merging attributes in JSX.
 
+**EXAMPLE**: see **samples** folder.
+
 **NOTICE**: This package only works for `vue 2` and projects created by `vue-cli`.
 
 **NOTICE**: This package isn't campatible with `@vue/cli-plugin-typescript`.
@@ -10,13 +12,11 @@ Write vue in TSX, powered by [babel-plugin-macros](https://github.com/kentcdodds
 
 **NOTICE**: DON'T use variable `h` in context where JSX used, because Vue use it to be as `$createElement` alias.
 
-**NOTICE**: The followed names / prefixes are reserved, if you use them, something will go wrong.
-
 **NOTICE**: All intrinsic elements (e.g., `div`, `fe-merge`) should be used in kebab case.
 
 **NOTICE**: All Vue builtin components (`transition`, `transition-group` and `keep-alive`) should also be used in kebab case.
 
-**EXAMPLE**: see **samples** folder.
+**NOTICE**: The followed names / prefixes are reserved, if you use them, something will go wrong.
 
 - staticClass
 - class
