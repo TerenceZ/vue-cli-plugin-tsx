@@ -4,8 +4,8 @@ module.exports = (api, _, __, invoking) => {
       '@babel/preset-typescript': '^7.3.3',
       '@types/webpack-env': '^1.13.9',
       'babel-plugin-macros': '^2.5.1',
-      'babel-plugin-transform-vue-jsx-spread-attributes': '^0.0.1',
-      'vue-tsx.macro': '^0.1.12',
+      'babel-plugin-transform-vue-jsx-spread-attributes': '^0.0.2',
+      'vue-tsx.macro': '^0.1.13',
       typescript: '^3.4.5',
     },
   })
